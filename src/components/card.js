@@ -1,6 +1,3 @@
-import { openImagePopup } from './modal.js';
-import { initialCards } from '../cards.js';
-
 export function deleteCard(cardElement) {
     cardElement.remove();
 }
@@ -13,7 +10,7 @@ export function handleImageClick(cardData, openImagePopup) {
     openImagePopup(cardData);
 }
 
-export function createCard(cardData, deleteCard, likeCard, handleImageClick) {
+export function createCard(cardData, openImagePopup) {
     const cardTemplate = document.querySelector('#card-template');
     const cardElement = cardTemplate.content.querySelector('.places__item').cloneNode(true);
 
@@ -31,12 +28,4 @@ export function createCard(cardData, deleteCard, likeCard, handleImageClick) {
     cardImage.addEventListener('click', () => handleImageClick(cardData, openImagePopup));
 
     return cardElement;
-}
-
-export function loadCards(openImagePopup) {
-    const placeList = document.querySelector('.places__list');
-    initialCards.forEach((card) => {
-        const cardElement = createCard(card, deleteCard, likeCard, (data) => handleImageClick(data, openImagePopup));
-        placeList.append(cardElement);
-    });
 }
