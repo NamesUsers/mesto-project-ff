@@ -11,9 +11,14 @@
 
 
 .error-message {
+  display: none;
   color: rgb(255, 0, 0);
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
+}
+
+.error-message_visible {
+  display: block;
 }

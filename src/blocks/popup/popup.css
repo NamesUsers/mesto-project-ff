@@ -21,3 +21,31 @@
   right: 0;
   z-index: 10;
 }
+
+.popup_type_confirm-delete .popup__content {
+  width: 430px;
+  height: 181px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  height: 181px;
+}
+
+
+
+.popup_type_confirm-delete .popup__title {
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.popup_type_confirm-delete .popup__button {
+  width: 100%;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

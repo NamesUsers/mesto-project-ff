@@ -20,9 +20,11 @@
 }
 
 .popup__button:disabled {
-  background-color: #cccccc;
+  background-color: transparent;
   color: #666666;
+  border: #666666 1px solid;
   cursor: not-allowed;
+  
   }
 
 @media screen and (max-width: 568px) {
