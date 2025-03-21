@@ -14,22 +14,19 @@ function checkResponse(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-
 export function getUserData() {
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
-
 
 export function getInitialCards() {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
-
 
 export function updateUserData(name, about) {
   return fetch(`${config.baseUrl}/users/me`, {
@@ -40,10 +37,9 @@ export function updateUserData(name, about) {
       about: about
     })
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
-// Обновление аватара
 export function updateAvatar(avatarUrl) {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: 'PATCH',
@@ -52,10 +48,9 @@ export function updateAvatar(avatarUrl) {
       avatar: avatarUrl
     })
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
-// Добавление новой карточки
 export function addNewCard(name, link) {
   return fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
@@ -65,32 +60,29 @@ export function addNewCard(name, link) {
       link: link
     })
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
-// Удаление карточки
 export function deleteCard(cardId) {
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: 'DELETE',
     headers: config.headers
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
-// Постановка лайка
 export function likeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'PUT',
     headers: config.headers
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
-// Снятие лайка
 export function unlikeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'DELETE',
     headers: config.headers
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }

@@ -1,17 +1,13 @@
 import { deleteCard, likeCard as likeCardOnServer, unlikeCard as unlikeCardOnServer } from './api.js';
 
-
 export function deleteCardElement(cardElement) {
   cardElement.remove();
 }
 
-
-export function likeCard(likeButton, cardId) {
-  const likeCountElement = likeButton.nextElementSibling;
+export function likeCard(likeButton, likeCountElement, cardId) {
   const isLiked = likeButton.classList.contains('card__like-button_is-active');
 
   if (isLiked) {
-    
     unlikeCardOnServer(cardId)
       .then(updatedCard => {
         likeCountElement.textContent = updatedCard.likes.length;
@@ -19,7 +15,6 @@ export function likeCard(likeButton, cardId) {
       })
       .catch(err => console.error('Ошибка при снятии лайка:', err));
   } else {
-    
     likeCardOnServer(cardId)
       .then(updatedCard => {
         likeCountElement.textContent = updatedCard.likes.length;
@@ -29,13 +24,7 @@ export function likeCard(likeButton, cardId) {
   }
 }
 
-
-export function handleImageClick(cardData, openImagePopup) {
-  openImagePopup(cardData);
-}
-
-
-export function createCard(cardData, openImagePopup, currentUserId, handleDeleteCard) {
+export function createCard(cardData, openImagePopup, currentUserId, handleDeleteCard, likeCard) {
   const cardTemplate = document.querySelector('#card-template');
   const cardElement = cardTemplate.content.querySelector('.places__item').cloneNode(true);
 
@@ -55,7 +44,7 @@ export function createCard(cardData, openImagePopup, currentUserId, handleDelete
   }
 
   
-  likeButton.addEventListener('click', () => likeCard(likeButton, cardData._id));
+  likeButton.addEventListener('click', () => likeCard(likeButton, likeCountElement, cardData._id));
 
   
   const deleteButton = cardElement.querySelector('.card__delete-button');
@@ -67,7 +56,7 @@ export function createCard(cardData, openImagePopup, currentUserId, handleDelete
 
   
   const cardImage = cardElement.querySelector('.card__image');
-  cardImage.addEventListener('click', () => handleImageClick(cardData, openImagePopup));
+  cardImage.addEventListener('click', () => openImagePopup(cardData));
 
   return cardElement;
 }
