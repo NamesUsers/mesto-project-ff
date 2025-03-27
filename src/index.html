@@ -36,7 +36,7 @@
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="edit-profile">
+      <form class="popup__form" name="edit-profile" novalidate>
         <input
           type="text"
           name="name"
@@ -45,10 +45,10 @@
           required
           minlength="2"
           maxlength="40"
-          pattern="[a-zA-Z\s-]+"
+          pattern="^[a-zA-ZА-Яа-яЁё\s\-]+$"
+          data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
         >
         <span class="error-message name-error"></span>
-  
         <input
           type="text"
           name="description"
@@ -57,10 +57,10 @@
           required
           minlength="2"
           maxlength="200"
-          pattern="[a-zA-Z\s-]+"
+          pattern="^[a-zA-ZА-Яа-яЁё\s\-]+$"
+          data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
         >
         <span class="error-message description-error"></span>
-  
         <button type="submit" class="popup__button">Сохранить</button>
       </form>
     </div>
@@ -70,7 +70,7 @@
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form class="popup__form" name="new-place">
+      <form class="popup__form" name="new-place" novalidate>
         <input
           type="text"
           name="place-name"
@@ -79,10 +79,10 @@
           required
           minlength="2"
           maxlength="30"
-          pattern="[a-zA-Z\s-]+"
+          pattern="^[a-zA-ZА-Яа-яЁё\s\-]+$"
+          data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
         >
         <span class="error-message place-name-error"></span>
-  
         <input
           type="url"
           name="link"
@@ -91,12 +91,12 @@
           required
         >
         <span class="error-message link-error"></span>
-  
         <button type="submit" class="popup__button">Сохранить</button>
       </form>
     </div>
   </div>
-
+  
+  
 <div class="popup popup_type_image">
     <div class="popup__content popup__content_content_image">
         <button type="button" class="popup__close"></button>
